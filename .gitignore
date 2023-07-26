@@ -1,3 +1,4 @@
 /elm-stuff/
 /state-guesser.sublime-project
-/.DS_Store
+.DS_Store
+/state-guesser.sublime-workspace
