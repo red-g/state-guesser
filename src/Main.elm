@@ -347,7 +347,7 @@ overlay element =
 
 viewMissedState : State -> Element Msg
 viewMissedState state =
-    el [ Font.color Color.error.a ] <| text <| States.toString state
+    el [ Font.color Color.error.a, centerX ] <| text <| States.toString state
 
 
 map : List (Attribute Msg) -> { border : Bool, statuses : Statuses, header : Maybe (Element Msg), footer : Maybe (Element Msg) } -> Element Msg

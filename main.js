@@ -15050,7 +15050,8 @@ var $author$project$Main$viewMissedState = function (state) {
 		$mdgriffith$elm_ui$Element$el,
 		_List_fromArray(
 			[
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Color$error.aR)
+				$mdgriffith$elm_ui$Element$Font$color($author$project$Color$error.aR),
+				$mdgriffith$elm_ui$Element$centerX
 			]),
 		$mdgriffith$elm_ui$Element$text(
 			$author$project$States$toString(state)));
