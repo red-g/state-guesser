@@ -15,7 +15,7 @@ import Holder
 import Json.Decode as Decode exposing (Decoder)
 import Model exposing (Game, Lock, Model(..), Scores, Second(..), Settings)
 import Random
-import States exposing (State, Status(..), Statuses)
+import States exposing (State, Status(..), Statuses, mapDims)
 import Svg
 import Svg.Attributes
 import Time
@@ -400,8 +400,14 @@ viewTime time =
 viewPaused : Lock -> Element Msg
 viewPaused _ =
     el [ width fill, height fill, onClick Resume ] <|
-        el [ centerX, centerY ] <|
-            viewIcon (squareSvg 40) Icon.pause
+        el (centerX :: elDims mapDims) <|
+            el [ centerX, centerY ] <|
+                viewIcon (squareSvg 40) Icon.pause
+
+
+elDims : { height : Int, width : Int } -> List (Attribute msg)
+elDims dims =
+    [ height <| px dims.height, width <| px dims.width ]
 
 
 viewScores : Scores -> Element Msg

@@ -1,4 +1,4 @@
-module States exposing (State(..), Status(..), Statuses, all, getStatuses, sorter, toString, view)
+module States exposing (State(..), Status(..), Statuses, all, getStatuses, mapDims, sorter, toString, view)
 
 import Cycle exposing (Cycle)
 import Element exposing (Element)
@@ -456,9 +456,19 @@ svgEl attributes children =
 -- height / width ratio: 593 / 959 = 0.61835245046 (simplest form)
 
 
+mapDims : { height : Int, width : Int }
+mapDims =
+    { height = 593, width = 959 }
+
+
+svgDims : { height : Int, width : Int } -> List (Svg.Attribute msg)
+svgDims { height, width } =
+    [ Svg.Attributes.height <| String.fromInt height, Svg.Attributes.width <| String.fromInt width ]
+
+
 view : { border : Bool, statuses : Statuses } -> Element State
 view { border, statuses } =
-    svgEl [ Svg.Attributes.height "593", Svg.Attributes.width "959" ] <|
+    svgEl (svgDims mapDims) <|
         [ groupAreas statuses
         , viewBorder border
         ]
